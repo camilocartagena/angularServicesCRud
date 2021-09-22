@@ -1,0 +1,71 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="nombreProducto"
+        placeholder="Search by Nombre"
+        [(ngModel)]="nombreProducto"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchNombreProducto()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista de Productos</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let producto of productos; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveProducto(producto, i)"
+      >
+        {{ producto.nombreProducto }}
+      </li>
+    </ul>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProductos()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentProducto">
+      <h4>Producto</h4>
+      <div>
+        <label><strong>Nombre:</strong></label>
+        {{ currentProducto.nombreProducto }}
+      </div>
+      <div>
+        <label><strong>Descripcion:</strong></label>
+        {{ currentProducto.descripcionProducto }}
+      </div>
+      <div>
+        <label><strong>Imagen:</strong></label>
+        <img
+          src="{{ currentProducto.imagenProducto }}"
+          style="width: 400px; height: 250px"
+          alt=""
+        />
+      </div>
+
+      <button
+        class="m-3 btn btn-sm btn-danger"
+        routerLink="/productos/{{ currentProducto.codigoProducto }}"
+      >
+        Edit
+      </button>
+    </div>
+
+    <div *ngIf="!currentProducto">
+      <br />
+      <p>Please click on a producto...</p>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,6 @@ export class AddServicioComponent implements OnInit {
 
   viewImage(event: any) {
     this.message = "";
-    console.log(event.target.value);
     this.url = event.target.value;
   }
 

@@ -1,0 +1,58 @@
+<div style="width: 400px; margin: auto">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="nombreProducto">Nombre Producto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombreProducto"
+          required
+          [(ngModel)]="producto.nombreProducto"
+          name="nombreProducto"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="descripcionProducto">Descripcion Producto</label>
+        <input
+          class="form-control"
+          id="descripcionProducto"
+          required
+          [(ngModel)]="producto.descripcionProducto"
+          name="descripcionProducto"
+        />
+      </div>
+
+      <div>
+        <img
+          [src]="url"
+          *ngIf="url"
+          alt="imagenServicio"
+          style="width: 400px; height: 250px"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="imagenProducto">Imagen Producto</label>
+        <input
+          class="form-control"
+          id="imagenProducto"
+          required
+          [(ngModel)]="producto.imagenProducto"
+          name="imagenProducto"
+          (change)="viewImage($event)"
+        />
+      </div>
+
+      <button (click)="saveProducto()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newProducto()">
+        Agregar Producto
+      </button>
+    </div>
+  </div>
+</div>
