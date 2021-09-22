@@ -1,0 +1,71 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="nombreServicio"
+        placeholder="Search by Nombre"
+        [(ngModel)]="nombreServicio"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchNombreServicio()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista de Servicios</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let servicio of servicios; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveServicio(servicio, i)"
+      >
+        {{ servicio.nombreServicio }}
+      </li>
+    </ul>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllServicios()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentServicio">
+      <h4>Servicio</h4>
+      <div>
+        <label><strong>Nombre:</strong></label>
+        {{ currentServicio.nombreServicio }}
+      </div>
+      <div>
+        <label><strong>Descripcion:</strong></label>
+        {{ currentServicio.descripcionServicio }}
+      </div>
+      <div>
+        <label><strong>Imagen:</strong></label>
+        <img
+          src="{{ currentServicio.imagenServicio }}"
+          style="width: 400px; height: 250px"
+          alt=""
+        />
+      </div>
+
+      <button
+        class="m-3 btn btn-sm btn-danger"
+        routerLink="/servicios/{{ currentServicio.codigoServicio }}"
+      >
+        Edit
+      </button>
+    </div>
+
+    <div *ngIf="!currentServicio">
+      <br />
+      <p>Please click on a servicio...</p>
+    </div>
+  </div>
+</div>

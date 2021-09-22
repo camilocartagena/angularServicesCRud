@@ -1,0 +1,51 @@
+<div style="width: 400px; margin: auto">
+  <div *ngIf="currentServicio" class="edit-form">
+    <h4>Servicio</h4>
+    <form>
+      <div class="form-group">
+        <label for="nombreServicio">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombreServicio"
+          [(ngModel)]="currentServicio.nombreServicio"
+          name="nombreServicio"
+        />
+      </div>
+      <div class="form-group">
+        <label for="descripcionServicio">Descripcion</label>
+        <input
+          type="text"
+          class="form-control"
+          id="descripcionServicio"
+          [(ngModel)]="currentServicio.descripcionServicio"
+          name="descripcionServicio"
+        />
+      </div>
+      <div class="form-group">
+        <label for="imagenServicio">Imagen</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imagenServicio"
+          [(ngModel)]="currentServicio.imagenServicio"
+          name="imagenServicio"
+        />
+      </div>
+    </form>
+
+    <button class="m-3 btn btn-danger" (click)="deleteServicio()">
+      Delete
+    </button>
+
+    <button type="submit" class="btn btn-success" (click)="updateServicio()">
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentServicio">
+    <br />
+    <p>Cannot access this Servicio...</p>
+  </div>
+</div>
